@@ -1,0 +1,20 @@
+1)
+
+Input:
+Invoice	 Items
+INV201	Mobile, Trimmer
+INV202	AC, Refrigerator
+
+Desired Output:
+Invoice	 Items
+INV201	Mobile
+INV201	Trimmer
+INV202	AC
+INV202	Refrigerator
+
+df = pd.read_excel('Data.xlsx')
+df_new = df.Items.str.split(', ',expand=true).set_index(df.Invoice).stack().reset_index(level=0,name='Items')
+df_new = df_new.reset_index(drop=True)[['Invoice','Items']]
+
+2) Below line wraps text within the DataFrame
+pd.set_option('display.max_colwidth',-1)
