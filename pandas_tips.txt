@@ -18,3 +18,5 @@ df_new = df_new.reset_index(drop=True)[['Invoice','Items']]
 
 2) Below line wraps text within the DataFrame
 pd.set_option('display.max_colwidth',-1)
+
+3) https://www.kaggle.com/jaakkokivisto/pandas-tutorial-for-finance-bigtech-sharpe-ratios
