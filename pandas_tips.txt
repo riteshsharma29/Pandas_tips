@@ -20,3 +20,39 @@ df_new = df_new.reset_index(drop=True)[['Invoice','Items']]
 pd.set_option('display.max_colwidth',-1)
 
 3) https://www.kaggle.com/jaakkokivisto/pandas-tutorial-for-finance-bigtech-sharpe-ratios
+
+
+##########################################################################################3333333333333333333333
+#https://stackoverflow.com/questions/50731229/split-cell-into-multiple-rows-in-pandas-dataframe
+
+'''
+split comma/semicolon separated values into multiple coloumns as index
+'''
+
+#df dataframe
+
+id	Invoice	Items	view	access
+1	payments	1;2;3	yes	no
+2	payments	4;5;6	no	no
+
+#solution
+
+df_new = (df.set_index(['id','Invoice', 'view', 'access'])
+   .stack()
+   .str.split(';', expand=True)
+   .stack()
+   .unstack(-2)
+   .reset_index(-1, drop=True)
+   .reset_index()
+)
+
+
+#output 
+
+   id   Invoice view access Items
+0   1  payments  yes     no     1
+1   1  payments  yes     no     2
+2   1  payments  yes     no     3
+3   2  payments   no     no     4
+4   2  payments   no     no     5
+5   2  payments   no     no     6
