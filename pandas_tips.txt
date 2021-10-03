@@ -65,3 +65,5 @@ https://www.business-science.io/python/2021/09/21/python-read-csv.html?utm_conte
 ###################################################################################################
 Save memory with Pandas
 https://marcobonzanini.com/2021/09/15/tips-for-saving-memory-with-pandas/
+###################################################################################################
+https://github.com/pandas-profiling/pandas-profiling
