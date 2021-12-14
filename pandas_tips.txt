@@ -67,3 +67,20 @@ Save memory with Pandas
 https://marcobonzanini.com/2021/09/15/tips-for-saving-memory-with-pandas/
 ###################################################################################################
 https://github.com/pandas-profiling/pandas-profiling
+###################################################################################################
+df = pd.read_excel("customer_products_data.xlsx",sheet_name="data")
+# list with string which needs to find in <Product Name> column
+array = ["tasty","bitter"]
+# forcing <Product Name> column to lowercase
+col = df['Product Name'].str.lower()
+# empty list
+r = []
+for mystr in array:
+    # find rows containing that string
+    result = df.loc[col.str.contains(mystr)]
+    r.append(result)
+# create dataframe with filtered rows
+result_df = pd.concat(r, axis=0)
+result_df.to_excel("r.xlsx")
+
+
